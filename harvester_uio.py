@@ -24,7 +24,7 @@ with open (api_keys) as fApis:
         keys[cont] = line.replace("\n","")
         cont = cont + 1
 
-print (keys)
+#print (keys)
 
 
 ##########API CREDENTIALS ############   
@@ -43,7 +43,7 @@ mycol = mydb["tweets"]
 
 
 class listener(StreamListener):
-    print ("Dentro de listener")
+   # print ("Dentro de listener")
  
     def on_data(self, data):
         dictTweet = json.loads(data)
