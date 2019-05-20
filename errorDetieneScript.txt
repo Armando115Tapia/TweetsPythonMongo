@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "harvester_uio.py", line 67, in <module>
+    twitterStream.filter(locations=[-78.593445,-0.370099,-78.386078,-0.081711])  #Coordenadas QUITO
+  File "/usr/local/lib/python2.7/dist-packages/tweepy/streaming.py", line 453, in filter
+    self._start(is_async)
+  File "/usr/local/lib/python2.7/dist-packages/tweepy/streaming.py", line 368, in _start
+    self._run()
+  File "/usr/local/lib/python2.7/dist-packages/tweepy/streaming.py", line 300, in _run
+    six.reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/tweepy/streaming.py", line 269, in _run
+    self._read_loop(resp)
+  File "/usr/local/lib/python2.7/dist-packages/tweepy/streaming.py", line 319, in _read_loop
+    line = buf.read_line()
+  File "/usr/local/lib/python2.7/dist-packages/tweepy/streaming.py", line 181, in read_line
+    self._buffer += self._stream.read(self._chunk_size)
+  File "/usr/lib/python2.7/dist-packages/urllib3/response.py", line 397, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "/usr/lib/python2.7/contextlib.py", line 35, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/usr/lib/python2.7/dist-packages/urllib3/response.py", line 303, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, 'Read timed out.')
+

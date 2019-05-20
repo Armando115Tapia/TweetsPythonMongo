@@ -44,27 +44,39 @@ mycol = mydb["tweets"]
 
 class listener(StreamListener):
    # print ("Dentro de listener")
+    try: 
+            def on_data(self, data):
+                dictTweet = json.loads(data)
+                try:
+                    dictTweet["_id"] = str(dictTweet['id'])
+                    mycol.insert(dictTweet)
+                    print (dictTweet)
+                except:
+                    print "Already exists"
+                    pass
+                return True
  
-    def on_data(self, data):
-        dictTweet = json.loads(data)
-        try:
-             dictTweet["_id"] = str(dictTweet['id'])
-             mycol.insert(dictTweet)
-             print (dictTweet)
-        except:
-            print "Already exists"
-            pass
-        return True
- 
-    def on_error(self, status):
-        print status
+            def on_error(self, status):
+               print status
+    except:
+        print "time out"
+    
  
 auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
 twitterStream = Stream(auth, listener())
  
 '''===============LOCATIONS=============='''
+#locations should be a list of tuples (lat,lon) 
+#quitoPoligon = [
+        #-78.529117, -0.004131,
+        #-78.552467, -0.355749,
+        #-78.373482, -0.382678,
+        #-78.245247, -0.046567
+#        ]
+#print (quitoPoligon)
 twitterStream.filter(locations=[-78.593445,-0.370099,-78.386078,-0.081711])  #Coordenadas QUITO 
+#twitterStream.filter(locations=quitoPoligon)
 print(twitterStream )
 
 #Colocar este archivo en el escritorio de la máquina, ejecutarlo mediante el comando: 
