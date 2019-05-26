@@ -58,7 +58,7 @@ class listener(StreamListener):
  
             def on_error(self, status):
                print status
-    except:
+    except ReadTimeoutError:
         print "time out"
     
  
